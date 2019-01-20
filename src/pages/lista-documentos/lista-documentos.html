@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ListaDocumentosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Documentos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list class="documentos">
+      <ion-item *ngFor="let doc of lista.documentos;">
+          <ion-row>
+            <div col-1 class="icone">
+                <i class="fa fa-file-pdf-o"></i>
+            </div>
+            <div col-9 class="file">
+                <a href="{{doc.file}}">{{doc.title}}</a>
+            </div>
+            <div col-2 class="dowload">
+                <button ion-button clear item-end><a href="{{doc.file}}"><ion-icon name="ios-download-outline"></ion-icon></a></button>
+            </div>
+          </ion-row>
+      </ion-item>
+    </ion-list>
+</ion-content>

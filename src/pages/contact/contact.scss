@@ -1,0 +1,121 @@
+page-contact {
+    ion-header{
+        ion-navbar{
+             .toolbar-background-md {
+                 background: #ff464b !important;
+             }
+             ion-title{
+                ion-icon{
+                    margin-right: 8px;
+                }
+                .toolbar-title-md{
+                    color: #FFF;
+                    text-transform: uppercase;
+                    font-weight: 600 !important;
+                    font-size: 1.8rem !important;
+                    padding: 0px;
+                }
+            }
+        }
+    }
+    ion-content{
+        .dias{
+            background: #464e48;
+            margin-top: 5px;
+            ion-col{
+                padding: 0px;
+                ion-segment{
+                    .segment-activated {
+                        border: none !important;
+                        color: #ffffff;
+                        background: #f53d3d;
+                        opacity: 1;
+                    }
+                    ion-segment-button{
+                        color: #fff !important;
+                        border: none !important;
+                    }
+                }
+            }
+        }
+        .list-eventos{
+            .list-dias{
+                ion-segment{
+                    ion-segment-button{
+                        text-align: unset;
+                        text-transform: unset;
+                        color: #464e48;
+                        border: none !important;
+                        font-weight: 700;
+                        height: 3.5rem;
+                        padding-left: 15px;
+                        font-size: 1.4rem;
+                    }
+                }
+                ion-list{
+                    ion-item{
+                        padding: 0px;
+                        border-top: dotted 1px #ccc;
+                        border-bottom: dotted 1px #ccc;
+                        margin-top: 1px;
+                        padding-left: 14px;
+                        margin-bottom: 10px;
+                        .item-inner{
+                            border: none;
+                            ion-label{
+                                margin: 7px 8px 7px 0;
+                                .hora{
+                                        font-size: 1.2rem;
+                                   }
+                            }
+                        }
+                        button{
+                            color: #f53d3d;
+                            font-size: 2.4rem;
+                            margin: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.toolbar-background-md{
+    background:rgb(116, 3, 3)!important;
+}
+.monthview-primary-with-event{
+    background: #f51c1c!important;
+}
+.toolbar-title-md{
+    color: #FFF;
+}
+.monthview-secondary-with-event{
+    background-color: #fedddd!important;
+}
+.monthview-selected{
+    background-color: rgb(116, 3, 3)!important;
+}
+.bar-button-default-md{
+    color: #FFF!important;
+}
+.desc .scroll-content{
+    background-color: black!important;
+}
+.h1{
+    color: #FFF;
+}
+.tabs-md .tabbar{
+    background: #000000;
+}
+.tabs-md .tab-button{
+    color: #ffffff;
+}
+.tabs-md .tab-button-icon{
+    color: rgba(238, 0, 0, 0.781);
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+    color:#185cfb;
+}
+.calendar-event-inner{
+    background-color: rgb(238, 0, 0)!important;
+}

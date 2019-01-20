@@ -1,0 +1,46 @@
+page-about {
+    .toolbar-background-md {
+        background: #ff464b !important;
+    }
+    .toolbar-title-md {
+        color: #FFF;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.8rem;
+        i{
+            margin-right: 8px;
+        }
+    }
+    ion-content{
+        ion-list{
+            margin: 16px 0 16px !important;
+            border-top: dotted 1px #ccc;
+            border-bottom: dotted 1px #ccc;
+            ion-item{
+                ion-label{
+                    margin: 17px 8px 13px 0 !important;
+                    overflow: unset;
+                    h2{
+                        white-space: pre-wrap;
+                        font-size: 1.3rem !important;
+                    }
+                    ion-row{
+                        float: right;
+                        a{
+                            margin: 0px !important;
+                            font-size: 1.2rem !important;
+                            span{
+                                text-transform: none;
+                                color: #464e48;
+                                i{
+                                    margin-left: 2px;
+                                    color: #f53d3d;
+                                }
+                            }
+                        }
+                    }
+                }                
+            }
+        }
+    }
+}

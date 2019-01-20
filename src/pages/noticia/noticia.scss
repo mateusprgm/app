@@ -1,0 +1,21 @@
+page-noticia {
+    ion-header{
+        .toolbar-background-md {
+            background: #ff464b !important;
+        }
+        ion-title{
+            .toolbar-title-md{
+                color: #FFF;
+                text-transform: uppercase;
+                font-weight: 600 !important;
+                font-size: 1.8rem !important;
+                padding: 0px;
+            }
+        }
+    }
+    ion-content{
+        .main-content{
+            padding: 16px;
+        }
+    }
+}

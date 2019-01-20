@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+        <i class="fa fa-newspaper-o"></i>
+       Notícias
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- .slice().reverse(); -->
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Puxe para atualizar"
+          refreshingSpinner="crescent"
+          refreshingText="Atualizando...">
+        </ion-refresher-content>
+      </ion-refresher>
+    <ion-list *ngFor="let noticia of noticia let id = index;" >
+        <ion-item (click)="pushPageN(noticia.title, noticia.content, noticia.image)">
+          <ion-thumbnail item-start>
+            <img src="{{noticia.image}}">
+          </ion-thumbnail>
+          <h2>{{noticia.title}}</h2>
+          <!-- <p [innerHTML]="noticia.sumary"></p> -->
+          <p>{{noticia.author_id}}</p>
+          <ion-row>
+              <a ion-button clear item-end>Visualizar <i danger class="fa fa-share fa-lg"></i></a>
+          </ion-row>
+          
+        </ion-item>
+    </ion-list>
+
+    <!-- <ion-list>
+      <ion-item *ngFor="let noticia of noticia">
+        <ion-thumbnail>
+          <img src="{{noticia.image}}" alt="">
+        </ion-thumbnail>
+      </ion-item>
+    </ion-list>  -->
+</ion-content>

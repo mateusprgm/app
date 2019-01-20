@@ -1,0 +1,97 @@
+page-evento {
+    ion-header{
+        ion-navbar{
+             .toolbar-background-md {
+                 background: #ff464b !important;
+             }
+             ion-title{
+                ion-icon{
+                    margin-right: 8px;
+                }
+                .toolbar-title-md{
+                    color: #FFF;
+                    text-transform: uppercase;
+                    font-weight: 600 !important;
+                    font-size: 1.8rem !important;
+                    padding: 0px;
+                }
+            }
+        }
+    }
+    ion-content{
+        .main-evento{
+            padding: 15px;
+            .informacoes{
+                .icon{
+                    width: 50px;
+                    height: 50px;
+                    background: #ff464b;
+                    border-radius: 50%;
+                    ion-icon{
+                        font-size: 2.2em;
+                        padding-left: 16px;
+                        padding-top: 10px;
+                        color: #FFF;
+                    }
+                }
+                .palestra{
+                    p{
+                        margin: 0px;
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        color: #4a4f4a;
+                        padding-top: 5px;
+                        padding-left: 8px;
+                        &.time{
+                            font-weight: 400;
+                            font-size: 1.4rem;
+                        }
+                    }
+                    
+                }
+            }
+            .tema{
+                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 1.6rem;
+            }
+            .documentos{
+                h2{
+                    margin-top: 5px;
+                    font-weight: 600;
+                    font-size: 1.9rem;
+                    color: #4a4f4a;
+                }
+                ion-list{
+                    ion-item{
+                        padding: 0px;
+                        border-top: dotted 1px #ccc;
+                        border-bottom: dotted 1px #ccc;
+                        margin-top: 6px;
+                        .item-inner{
+                            border: none;
+                            ion-label{
+                                white-space: normal;
+                                font-size: 1.3rem !important;
+                                margin: 5px 8px 5px 0;
+                                .icone{
+                                    i{
+                                        font-size: 2.5rem;
+                                        padding: 5px;
+                                        color: #4a4f4a;
+                                    }
+                                }
+                                a{
+                                    text-decoration: none;
+                                    color: #4a4f4a;
+                                    font-weight: 600;
+                                    font-size: 1.4rem;                                
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

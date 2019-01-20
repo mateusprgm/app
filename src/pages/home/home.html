@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="text-align: center;">ANDES-SN</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Puxe para atualizar"
+          refreshingSpinner="crescent"
+          refreshingText="Atualizando...">
+        </ion-refresher-content>
+      </ion-refresher>
+     
+      
+      <ion-row class="slider">
+        <ion-slides pager>
+          <ion-slide *ngFor="let noticia of noticias" (click)="pushPageNoticias(noticia.title, noticia.content, noticia.image);">
+            <div class="image">
+              <img src="{{noticia.image}}" alt="">
+            </div>
+            <div class="title">
+              <h1>{{noticia.title}}</h1>
+            </div> 
+          </ion-slide>
+        </ion-slides>
+        <div class="link-footer">
+          <a href="#" (click)="pushPageListNoticias();">Todas as Notícias <i danger class="fa fa-share fa-lg"></i></a>
+        </div>
+      </ion-row>
+      
+      <ion-row class="eventos">
+        <h2 class="title">Programação</h2>
+        <div class="list-eventos">
+          {{evento.dia}}
+          <ion-label *ngIf="texto"> 
+            <p class="alert alert-danger">{{texto}}</p>
+          </ion-label>
+          <ion-list>
+            <ion-item *ngFor="let evento of evento?.palestras" (click)="pushPagePalestra(evento);">
+              <div class="icon">
+                <ion-icon name="ios-microphone-outline"></ion-icon>
+              </div>
+              <div class="info">
+                <p>{{evento.title}}</p>
+                <p>{{evento.horario}}</p>
+              </div>
+            </ion-item>
+          </ion-list>
+        </div>
+
+
+        <div class="link-footer">
+          <a href="#" (click)="pushPageEventos();">Ver Programação <i danger class="fa fa-share fa-lg"></i></a>
+        </div>
+      </ion-row>
+      <div class="documentos">
+        <h2 class="title">Documentos</h2>
+        <ion-row>
+            <div col-6>
+                <ion-row class="docs">
+                  <div col-2 class="icone">
+                      <i class="fa fa-file-pdf-o"></i>
+                  </div>
+                  <div col-10 class="file">
+                      <a href="http://webtecsites.com.br/uploads/documentos/guia_do_congressista.pdf">Guia do Congressista</a>
+                  </div>
+                </ion-row>
+              </div>
+              <div col-6>
+                  <ion-row class="docs">
+                    <div col-2 class="icone">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </div>
+                    <div col-10 class="file">
+                        <a href="http://webtecsites.com.br/uploads/documentos/estatuto_do_andes_sn_aprovado_no_37_congresso.pdf">Estatuto</a>
+                    </div>
+                  </ion-row>
+              </div>
+        </ion-row>
+        <div class="link-footer">
+            <a href="#" (click)="pushPageListPublicacoes();">Ver Documentos <i danger class="fa fa-share fa-lg"></i></a>
+          </div>
+      </div>
+      <ion-fab bottom right #fab>
+        <button ion-fab style="background-color: #ff464b" (click)="pushPageEventos();"><i primary class="fa fa-calendar fa-lg"></i></button>
+      </ion-fab>
+</ion-content>

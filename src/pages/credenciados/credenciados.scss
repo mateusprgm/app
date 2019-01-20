@@ -1,0 +1,48 @@
+page-credenciados {
+    ion-header{
+        .toolbar-background-md {
+            background: #ff464b !important;
+        }
+        ion-title{
+            ion-icon{
+                margin-right: 8px;
+            }
+            .toolbar-title-md{
+                color: #FFF;
+                text-transform: uppercase;
+                font-weight: 600 !important;
+                font-size: 1.8rem !important;
+            }
+        }
+    }
+    ion-content{
+        ion-searchbar{
+            .searchbar-input{
+                padding: 6px !important;
+            }
+            .searchbar-search-icon{
+                right: 16px !important;
+                left: unset !important;
+                background-size: 30px !important;
+                top: 6px !important; 
+            }
+        }
+        ion-list{
+            border-bottom: dotted 1px #ccc;
+            ion-item{
+                ion-label{
+                    p{
+                        a{
+                            float: right;
+                            color: #464e48;
+                            i{
+                                margin-left: 2px;
+                                color: #f53d3d;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

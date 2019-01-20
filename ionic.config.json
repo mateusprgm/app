@@ -1,0 +1,10 @@
+{
+  "name": "andes",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
+
+  
+
