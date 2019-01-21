@@ -35,11 +35,11 @@ export class CredenciadosPage {
 
       this.obs = this.HttpClient.get(this.url);
 
-      this.obs.
-          subscribe(data =>{
-              this.items = data['results'];
-              this.grupo = this.items;
-          })
+      // this.obs.
+      //     subscribe(data =>{
+      //         this.items = data['results'];
+      //         this.grupo = this.items;
+      //     })
       
   }
 
@@ -56,12 +56,24 @@ export class CredenciadosPage {
     }, 2000);
   }
 
- 
+  
+  pulllist(){
+    
+    this.obs.
+          subscribe(data =>{
+              this.items = data['results'];
+              this.grupo = this.items;
+          })
+          console.log('oi');
+  }
   
 
   initializeItems() {
+    
     this.items = [];
     this.items = this.grupo;
+
+    
   }
   
   getItems(ev: any) {
@@ -69,7 +81,11 @@ export class CredenciadosPage {
     this.initializeItems();
 
     // set val to the value of the searchbar
-    const val = ev.target.value;
+    let val = ev.target.value;
+    if(val == ''){
+      val = "@#@#";
+    }
+    
 
     // if the value is an empty string don't filter the items
     
