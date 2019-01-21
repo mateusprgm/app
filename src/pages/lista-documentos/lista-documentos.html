@@ -15,6 +15,7 @@
 
 <ion-content padding>
   <ion-list class="documentos">
+      
       <ion-item *ngFor="let doc of lista.documentos;">
           <ion-row>
             <div col-1 class="icone">
@@ -24,7 +25,7 @@
                 <a href="{{doc.file}}">{{doc.title}}</a>
             </div>
             <div col-2 class="dowload">
-                <button ion-button clear item-end><a href="{{doc.file}}"><ion-icon name="ios-download-outline"></ion-icon></a></button>
+                <button ion-button clear item-end><ion-icon name="ios-download-outline"></ion-icon></button>
             </div>
           </ion-row>
       </ion-item>

@@ -41,6 +41,10 @@ export class AboutPage {
 
     setTimeout(() => {
       console.log('Async operation has ended');
+      this.obs.subscribe(data =>{
+        this.noticia = data['results'];
+      })
+      console.log(this.noticia);
       refresher.complete();
     }, 2000);
   }
