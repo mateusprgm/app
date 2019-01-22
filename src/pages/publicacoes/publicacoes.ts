@@ -31,7 +31,6 @@ export class PublicacoesPage {
     this.obs.subscribe(data =>{
       this.publicacoes = data['results'];
       this.publicacoes.sort();
-      // console.log(this.publicacoes);
     })
      console.log(this.publicacoes);
   }
@@ -44,7 +43,6 @@ export class PublicacoesPage {
       this.obs.subscribe(data =>{
         this.publicacoes = data['results'];
         this.publicacoes.sort();
-        // console.log(this.publicacoes);
       })
       refresher.complete();
     }, 2000);

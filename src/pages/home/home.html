@@ -59,25 +59,15 @@
       <div class="documentos">
         <h2 class="title">Documentos</h2>
         <ion-row>
-            <div col-6>
+            <div col-6 *ngFor="let item of categoria_destaque" (click)="pushPageListaDoc(item.lista);">
                 <ion-row class="docs">
                   <div col-2 class="icone">
                       <i class="fa fa-file-pdf-o"></i>
                   </div>
                   <div col-10 class="file">
-                      <a href="http://webtecsites.com.br/uploads/documentos/guia_do_congressista.pdf">Guia do Congressista</a>
+                      <a href="http://webtecsites.com.br/uploads/documentos/guia_do_congressista.pdf">{{item.lista.name}}</a>
                   </div>
                 </ion-row>
-              </div>
-              <div col-6>
-                  <ion-row class="docs">
-                    <div col-2 class="icone">
-                        <i class="fa fa-file-pdf-o"></i>
-                    </div>
-                    <div col-10 class="file">
-                        <a href="http://webtecsites.com.br/uploads/documentos/estatuto_do_andes_sn_aprovado_no_37_congresso.pdf">Estatuto</a>
-                    </div>
-                  </ion-row>
               </div>
         </ion-row>
         <div class="link-footer">

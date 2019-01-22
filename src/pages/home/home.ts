@@ -9,6 +9,7 @@ import { NoticiaPage } from '../noticia/noticia';
 import { EventoPage } from '../evento/evento';
 import { AboutPage } from '../about/about';
 import { PublicacoesPage } from '../publicacoes/publicacoes';
+import { ListaDocumentosPage } from '../lista-documentos/lista-documentos';
 
 @Component({
   selector: 'page-home',
@@ -20,23 +21,25 @@ export class HomePage {
 
   url = "http://webtecsites.com.br/api/doc/noticias";
   url2 = "http://webtecsites.com.br/api/doc/agendas";
+  url3 = "http://webtecsites.com.br/api/doc/documentos/categorias";
 
   obs:Observable<any>;
   obs2:Observable<any>; 
+  obs3:Observable<any>;
+
   public noticias: Array<Object>;
   public eventos = [];
-  public evento= [];
+  public evento = [];
+  public documentos = [];
+  public categoria_destaque = [];
   public texto:string;
 
 
   constructor(public navCtrl: NavController, public HttpClient: HttpClient) {
 
-  
-    
-    
-
     this.obs = HttpClient.get(this.url);
     this.obs2 = HttpClient.get(this.url2);
+    this.obs3 = HttpClient.get(this.url3);
 
     this.obs.subscribe(data =>{
       this.noticias = data['results'];
@@ -60,14 +63,25 @@ export class HomePage {
       if(ev){
         this.evento = this.evento[0]['evento'].atual;
         this.texto = "";
-        console.log(this.evento);
       }else{
         this.texto = "Não Existe eventos hoje!";
       }
-      
-      
+    })
+
+    this.obs3.subscribe(data =>{
+    this.documentos = data['results'];
+
+    this.documentos.forEach(element =>{
+      if(element.destaque != false){
+        this.categoria_destaque.push({
+              lista:element
+        });
+      }
+    })
     })
   }
+
+
 
   pushPageEventos(horario, titulo){
     this.navCtrl.push(ContactPage, {
@@ -92,6 +106,15 @@ export class HomePage {
           image: image
       }
     });
+  }
+
+  pushPageListaDoc(lista){
+     
+    
+     this.navCtrl.push(ListaDocumentosPage,{
+       lista:lista
+     })
+     
   }
 
   doRefresh(refresher) {
@@ -124,7 +147,18 @@ export class HomePage {
           this.texto = "Não existe eventos hoje!";
         }
       })
-
+      this.categoria_destaque = [];
+      this.obs3.subscribe(data =>{
+        this.documentos = data['results'];
+    
+        this.documentos.forEach(element =>{
+          if(element.destaque != false){
+            this.categoria_destaque.push({
+                  lista:element
+            });
+          }
+        })
+        })
       refresher.complete();
     }, 2000);
   }
