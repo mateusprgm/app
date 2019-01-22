@@ -22,25 +22,26 @@ export class GrupoPage {
   item = [];
   nome_pessoa: string;
   grupo_id: string;
-  grupo_nome: string;
+ 
   lista = [];
   grupo = [];
+  lista_credenciados = [];
 
   url = "http://webtecsites.com.br/api/doc/credeciamento";
 
   negrito1 = "";
   negrito2 = "";
   obs: Observable<any>;
-  cordova: any;
+  nome_grupo:string;
+  
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
 
     
-
+    if(navParams.get('item')){
       this.item = navParams.get('item');
-      this.grupo_id = this.item['grupo'];
-      this.grupo_nome = this.item['nome_grupo'];
-      this.nome_pessoa = this.item['nome_pessoa'];
-
+      this.nome_grupo = this.item['grupo']['name'];
+     
       this.obs = this.HttpClient.get(this.url);
 
       this.obs
@@ -49,8 +50,8 @@ export class GrupoPage {
 
         this.lista.forEach(element => {
 
-          if(element.grupo.id == parseInt(this.grupo_id)){
-                if(element.name == this.item['nome_pessoa']){
+          if(element.grupo.id == parseInt(this.item['grupo']['id'])){
+                if(element.name ==this.item['name']){
                   this.negrito1 = "<b>";
                   this.negrito2 = "</b>";
                 }else{
@@ -64,10 +65,13 @@ export class GrupoPage {
               sessao_sindical: element['sessao_sindical']
 
             });
-          console.log(this.grupo);
-          }
-            
+          } 
         });
       })
+    }else if(navParams.get('grupo')){
+        this.lista_credenciados = navParams.get('grupo');
+        this.nome_grupo = this.lista_credenciados['name'];
+        this.lista_credenciados = this.lista_credenciados['credeciados'];
+    }
   }
 }

@@ -25,29 +25,24 @@
           refreshingText="Atualizando...">
         </ion-refresher-content>
       </ion-refresher>
-      <ion-searchbar [placeholder]='teste' (ionInput)="getItems($event)" (click)="pulllist();"></ion-searchbar>
+      <ion-searchbar [placeholder]='label' (ionInput)="getItems($event)" (click)="pulllist();">
+      </ion-searchbar>
 
   <ion-list *ngFor="let item of items; let index = index;" >
-      <ion-item [ngSwitch]="my_tab" (click)="pushPageG(item.grupo.id, item.grupo.name, item.name)">
+      <ion-item [ngSwitch]="my_tab" (click)="pushPageG(item)">
           <h2 ><b>Nome:</b> {{ item.name }}</h2>
           <p><b>Grupo:</b> {{item.grupo.name}}      <b>Sala:</b> {{item.grupo.sala}} </p>
-          <p><b>Seção Sindical:</b> {{item.sessao_sindical}} <a>Ver Grupo <i danger class="fa fa-share fa-lg"></i></a></p>
-          
-          <!-- <div *ngFor="let credenciado of credenciado; let id = index;" >
-            <div *ngSwitchCase="id">
-                  <p >
-                    <b>Sala: </b>{{credenciado.descricao}} {{credenciado.titulo}}
-                  </p>
-            </div>  
-            
-          </div> -->
-        
+          <p><b>Seção Sindical:</b> {{item.sessao_sindical}} 
+            <a>Ver Grupo 
+            <i danger class="fa fa-share fa-lg"></i>
+          </a>
+        </p>
       </ion-item>
   </ion-list>
-      <!-- <ion-list  *ngFor="let noticia of noticia.slice().reverse(); let id = index;"> -->
-          <!-- <ion-item *ngFor="let noticia of noticia.slice().reverse(); let id = index;">
-            <h2>Nome: {{noticia.results.titulo}}</h2>
-            <p>Sala: {{noticia.results.descricao}}</p>
-          </ion-item> -->
-      <!-- </ion-list> -->
+  <h1>Grupos</h1>
+  <ion-list *ngFor="let grupo of grupo_lista;">
+    <ion-item (click)="pushPageGL(grupo)">
+       <p>{{grupo.name}}</p> <p>Sala: {{grupo.sala}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

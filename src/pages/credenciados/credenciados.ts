@@ -19,27 +19,31 @@ import { HttpClient } from '@angular/common/http';
 )
 export class CredenciadosPage {
 
-  public teste = "Buscar...";
+  public label = "Buscar credenciado...";
   
   
   url = "http://webtecsites.com.br/api/doc/credeciamento";
-  
+  url_grupos = "http://webtecsites.com.br/api/doc/grupos";
+
   obs: Observable<any>;
+  obs_grupos: Observable<any>;
 
   searchQuery: string = '';
 
   items = [];
   grupo = [];
+  grupo_lista = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
 
       this.obs = this.HttpClient.get(this.url);
 
-      // this.obs.
-      //     subscribe(data =>{
-      //         this.items = data['results'];
-      //         this.grupo = this.items;
-      //     })
+      this.obs_grupos = this.HttpClient.get(this.url_grupos);
+
+      this.obs_grupos.subscribe(data => {
+        this.grupo_lista = data['results'];
+        console.log(this.grupo_lista);
+      });
       
   }
 
@@ -52,11 +56,15 @@ export class CredenciadosPage {
               this.items = data['results'];
               this.grupo = this.items;
           })
+      this.obs_grupos.
+          subscribe(data => {
+              this.grupo_lista = data['results'];
+              console.log(this.grupo_lista);
+      });    
       refresher.complete();
     }, 2000);
   }
 
-  
   pulllist(){
     
     this.obs.
@@ -64,8 +72,9 @@ export class CredenciadosPage {
               this.items = data['results'];
               this.grupo = this.items;
           })
-          console.log('oi');
+     
   }
+  
   
 
   initializeItems() {
@@ -99,17 +108,14 @@ export class CredenciadosPage {
     
     
   }
-  pushPageG(grupo, nome_grupo, nome_pessoa){
+  pushPageG(item){
     this.navCtrl.push(GrupoPage, {
-        item: {
-            grupo: grupo,
-            nome_grupo: nome_grupo,
-            nome_pessoa: nome_pessoa,
-        }
-        
+        item: item
     });
   }
-
-  
-
+  pushPageGL(grupo){
+    this.navCtrl.push(GrupoPage, {
+        grupo: grupo
+    });
+  }
 }
