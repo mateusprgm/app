@@ -22,6 +22,7 @@ export class AboutPage {
 
      this.obs.subscribe(data =>{
        this.noticia = data['results'];
+       this.noticia.reverse();
      })
      console.log(this.noticia);
   }
