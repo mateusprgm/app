@@ -47,6 +47,7 @@ export class HomePage {
     this.obs.subscribe(data =>{
       this.noticias = data['results'];
       this.noticias.reverse();
+
       let i = 0;
 
       this.noticias.forEach(element => {
@@ -176,6 +177,17 @@ export class HomePage {
           }
         })
         })
+      
+      let i = 0;
+      this.quatroNoticias = [];
+      this.noticias.forEach(element => {
+        if(i < 4){
+          this.quatroNoticias.push(
+            element
+          );
+          i++;
+        }
+      });
       refresher.complete();
     }, 2000);
   }
