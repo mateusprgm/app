@@ -42,7 +42,7 @@ export class PublicacoesPage {
       console.log('Async operation has ended');
       this.obs.subscribe(data =>{
         this.publicacoes = data['results'];
-        this.publicacoes.sort();
+        this.publicacoes.reverse();
       })
       refresher.complete();
     }, 2000);

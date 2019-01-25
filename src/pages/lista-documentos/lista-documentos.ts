@@ -14,9 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'lista-documentos.html',
 })
 export class ListaDocumentosPage {
-  public lista;
+  public lista: Array<Object>;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.lista = navParams.get("lista");
-    console.log(this.lista);
+    this.lista['documentos'].reverse();
+    console.log(this.lista['documentos']);
   }
 }

@@ -27,6 +27,7 @@ export class CredenciadosPage {
 
   obs: Observable<any>;
   obs_grupos: Observable<any>;
+  obs_ordem : Observable<any>;
 
   searchQuery: string = '';
 
@@ -69,7 +70,9 @@ export class CredenciadosPage {
     
     this.obs.
           subscribe(data =>{
+              console.log(data['results']['name']);
               this.items = data['results'];
+              console.log(this.items['name']);
               this.grupo = this.items;
           })
      
@@ -82,7 +85,6 @@ export class CredenciadosPage {
     this.items = [];
     this.items = this.grupo;
 
-    
   }
   
   getItems(ev: any) {

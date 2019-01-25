@@ -94,6 +94,7 @@ export class HomePage {
         this.categoria_destaque.push({
               lista:element
         });
+        this.categoria_destaque.reverse();
       }
     })
     })
