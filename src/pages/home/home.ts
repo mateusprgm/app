@@ -28,12 +28,15 @@ export class HomePage {
   obs3:Observable<any>;
 
   public noticias: Array<Object>;
+  
   public eventos = [];
   public evento = [];
   public documentos = [];
   public categoria_destaque = [];
   public texto:string;
 
+
+  public quatroNoticias = [];
 
   constructor(public navCtrl: NavController, public HttpClient: HttpClient) {
 
@@ -43,6 +46,20 @@ export class HomePage {
 
     this.obs.subscribe(data =>{
       this.noticias = data['results'];
+      this.noticias.reverse();
+      let i = 0;
+
+      this.noticias.forEach(element => {
+        if(i < 4){
+          this.quatroNoticias.push(
+            element
+          );
+          i++;
+        }
+      });
+
+   
+      console.log(this.quatroNoticias);
     });
 
     this.obs2.subscribe(data =>{

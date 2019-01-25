@@ -17,7 +17,7 @@
       
       <ion-row class="slider">
         <ion-slides pager>
-          <ion-slide *ngFor="let noticia of noticias" (click)="pushPageNoticias(noticia.title, noticia.content, noticia.image);">
+          <ion-slide *ngFor="let noticia of quatroNoticias" (click)="pushPageNoticias(noticia.title, noticia.content, noticia.image);">
             <div class="image">
               <img src="{{noticia.image}}" alt="">
             </div>
