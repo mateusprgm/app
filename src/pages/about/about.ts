@@ -44,6 +44,7 @@ export class AboutPage {
       console.log('Async operation has ended');
       this.obs.subscribe(data =>{
         this.noticia = data['results'];
+        this.noticia.reverse();
       })
       console.log(this.noticia);
       refresher.complete();

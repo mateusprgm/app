@@ -176,6 +176,7 @@ export class HomePage {
                   lista:element
             });
           }
+          this.categoria_destaque.reverse();
         })
         })
       
