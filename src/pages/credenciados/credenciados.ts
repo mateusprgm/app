@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { GrupoPage } from '../grupo/grupo';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
@@ -29,6 +29,8 @@ export class CredenciadosPage {
   obs_grupos: Observable<any>;
   obs_ordem : Observable<any>;
 
+  loading:any;
+
   searchQuery: string = '';
 
   items = [];
@@ -36,8 +38,11 @@ export class CredenciadosPage {
   grupo_lista = [];
   aux = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient, public loadingCtrl: LoadingController) {
 
+      this.showLoader();
+
+    
       this.obs = this.HttpClient.get(this.url);
 
       this.obs_grupos = this.HttpClient.get(this.url_grupos);
@@ -47,10 +52,21 @@ export class CredenciadosPage {
         console.log(this.grupo_lista);
       });
 
+      
+
       this.obs.
           subscribe(data =>{
+              let conta = 0;
               this.aux = data['results'];
+              this.aux.forEach(datas =>{
+                conta++;
+                if(this.aux.length == conta){
+                  this.loading.dismiss();
+                }console.log(this.aux.length+"-"+conta);
+              })
           })
+      
+      
   }
 
   doRefresh(refresher) {
@@ -75,9 +91,6 @@ export class CredenciadosPage {
     this.grupo = this.aux;
      
   }
-  
-  
-
   initializeItems() {
     this.grupo = this.aux;
     this.items = this.aux;
@@ -117,5 +130,12 @@ export class CredenciadosPage {
     this.navCtrl.push(GrupoPage, {
         grupo: grupo
     });
+  }
+
+  showLoader(){
+      this.loading = this.loadingCtrl.create({
+        content: 'Aguarde...',
+      });
+      this.loading.present();
   }
 }
