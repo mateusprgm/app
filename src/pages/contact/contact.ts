@@ -17,7 +17,7 @@ registerLocaleData(localeZh);
 })
 export class ContactPage {
 
-    url = "http://webtecsites.com.br/api/doc/agendas";
+    url = "http://app.andes.org.br/api/doc/agendas";
 
     obs: Observable<any>;
 

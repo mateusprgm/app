@@ -20,7 +20,7 @@ export class PublicacoesPage {
 
   
   
-  url = "http://webtecsites.com.br/api/doc/documentos/categorias";
+  url = "http://app.andes.org.br/api/doc/documentos/categorias";
   obs: Observable<any>;
   publicacoes: Array<object>;
 

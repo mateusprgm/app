@@ -27,7 +27,7 @@ export class GrupoPage {
   grupo = [];
   lista_credenciados = [];
 
-  url = "http://webtecsites.com.br/api/doc/credeciamento";
+  url = "http://app.andes.org.br/api/doc/credeciamento";
 
   negrito1 = "";
   negrito2 = "";

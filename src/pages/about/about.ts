@@ -12,7 +12,7 @@ export class AboutPage {
   
   
   
-  url = "http://webtecsites.com.br/api/doc/noticias";
+  url = "http://app.andes.org.br/api/doc/noticias";
 
   obs:Observable<any>;
   public noticia: Array<Object>;

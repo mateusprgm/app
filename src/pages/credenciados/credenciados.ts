@@ -22,8 +22,8 @@ export class CredenciadosPage {
   public label = "Buscar credenciado...";
   
   
-  url = "http://webtecsites.com.br/api/doc/credeciamento";
-  url_grupos = "http://webtecsites.com.br/api/doc/grupos";
+  url = "http://app.andes.org.br/api/doc/credeciamento";
+  url_grupos = "http://app.andes.org.br/api/doc/grupos";
 
   obs: Observable<any>;
   obs_grupos: Observable<any>;
@@ -34,6 +34,7 @@ export class CredenciadosPage {
   items = [];
   grupo = [];
   grupo_lista = [];
+  aux = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
 
@@ -45,6 +46,11 @@ export class CredenciadosPage {
         this.grupo_lista = data['results'];
         console.log(this.grupo_lista);
       });
+
+      this.obs.
+          subscribe(data =>{
+              this.aux = data['results'];
+          })
       
   }
 
@@ -54,8 +60,7 @@ export class CredenciadosPage {
     setTimeout(() => {
       this.obs.
           subscribe(data =>{
-              this.items = data['results'];
-              this.grupo = this.items;
+            this.aux = data['results'];
           })
       this.obs_grupos.
           subscribe(data => {
@@ -68,13 +73,7 @@ export class CredenciadosPage {
 
   pulllist(){
     
-    this.obs.
-          subscribe(data =>{
-              console.log(data['results']['name']);
-              this.items = data['results'];
-              console.log(this.items['name']);
-              this.grupo = this.items;
-          })
+    this.grupo = this.aux;
      
   }
   
@@ -82,7 +81,7 @@ export class CredenciadosPage {
 
   initializeItems() {
     
-    this.items = [];
+    this.items = this.aux;
     this.items = this.grupo;
 
   }

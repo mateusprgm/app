@@ -19,9 +19,9 @@ export class HomePage {
   public slidesOptions = [];
  
 
-  url = "http://webtecsites.com.br/api/doc/noticias";
-  url2 = "http://webtecsites.com.br/api/doc/agendas";
-  url3 = "http://webtecsites.com.br/api/doc/documentos/categorias";
+  url = "http://app.andes.org.br/api/doc/noticias";
+  url2 = "http://app.andes.org.br/api/doc/agendas";
+  url3 = "http://app.andes.org.br/api/doc/documentos/categorias";
 
   obs:Observable<any>;
   obs2:Observable<any>; 
