@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the GrupoPage page.
@@ -33,12 +34,15 @@ export class GrupoPage {
   negrito2 = "";
   obs: Observable<any>;
   nome_grupo:string;
+  loading: any;
+  conta = 0;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient, public loadingCtrl: LoadingController) {
+    
     
     if(navParams.get('item')){
+      this.showLoader();
       this.item = navParams.get('item');
       this.nome_grupo = this.item['grupo']['name'];
      
@@ -47,7 +51,8 @@ export class GrupoPage {
       this.obs
       .subscribe(data => {
         this.lista = data['results'];
-
+      
+        console.log(this.lista.length);
         this.lista.forEach(element => {
 
           if(element.grupo.id == parseInt(this.item['grupo']['id'])){
@@ -65,13 +70,31 @@ export class GrupoPage {
               sessao_sindical: element['sessao_sindical']
 
             });
-          } 
+          }
+          this.conta++;
+          if(this.lista.length == this.conta){
+            this.loading.dismiss();
+          }
         });
+
       })
     }else if(navParams.get('grupo')){
         this.lista_credenciados = navParams.get('grupo');
         this.nome_grupo = this.lista_credenciados['name'];
         this.lista_credenciados = this.lista_credenciados['credeciados'];
     }
+    
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Aguarde...',
+    });
+
+    if(this.lista.length == this.conta){
+      console.log('aqui');
+      this.loading.duration = 0
+    };
+    this.loading.present();
   }
 }

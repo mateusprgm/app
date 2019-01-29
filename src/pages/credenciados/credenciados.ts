@@ -51,7 +51,6 @@ export class CredenciadosPage {
           subscribe(data =>{
               this.aux = data['results'];
           })
-      
   }
 
   doRefresh(refresher) {
@@ -80,7 +79,7 @@ export class CredenciadosPage {
   
 
   initializeItems() {
-    
+    this.grupo = this.aux;
     this.items = this.aux;
     this.items = this.grupo;
 
