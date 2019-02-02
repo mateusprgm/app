@@ -157,6 +157,7 @@ export class HomePage {
     setTimeout(() => {
       this.obs.subscribe(data =>{
         this.noticias = data['results'];
+        this.noticias.reverse();
         // console.log(this.noticias);
       });
       this.obs2.subscribe(data =>{
