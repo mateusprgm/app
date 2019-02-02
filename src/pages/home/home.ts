@@ -65,9 +65,26 @@ export class HomePage {
 
     this.obs2.subscribe(data =>{
       let ev = false;
+      let month:string;
+      let day:string;
+      let mes = (new Date().getMonth()+1);
+      let dia = (new Date().getDate());
+
+      month = mes.toString();
+      day = dia.toString();
+      
+      if(day.length < 2){
+        day = 0 + day;
+        console.log(day);
+      }
+      if(month.length < 2){
+        month = 0 + month;
+      }
+
       this.eventos = data['results'];
       this.eventos.forEach(element => {
-      data = new Date().getDate() + "-" + new Date().getMonth()+1 + "-" + new Date().getFullYear();
+      data = day + "-" + month +  "-" + new Date().getFullYear();
+      console.log(data);
         if(element.data == data){
             this.evento.push({
               evento:{
@@ -147,7 +164,7 @@ export class HomePage {
         this.evento = [];
         this.eventos = data['results'];
         this.eventos.forEach(element => {
-        data = new Date().getDate() + "-" + new Date().getMonth()+1 + "-" + new Date().getFullYear();
+        data = new Date().getDate() + "-" + new Date().getMonth()+ 1 + "-" + new Date().getFullYear();
           if(element.data == data){
               this.evento.push({
                 evento:{
